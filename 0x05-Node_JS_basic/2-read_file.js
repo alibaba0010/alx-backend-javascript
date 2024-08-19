@@ -1,7 +1,7 @@
 /**
 *A module to read a file synchronously with node Js
 *@param {String} msg The string to print
-*@author Oyedele Bolaji <https://github.com/Bolaji582>
+*@author Oyedele Bolaji <https://github.com/alibaba0010>
 */
 
 const fs = require('fs');

@@ -1,6 +1,6 @@
 /**
 *Reading a file asynchronously with Node JS
-*@author Oyedele Bolaji <https://github.com/Bolaji582>
+*@author Oyedele Bolaji <https://github.com/alibaba0010>
 */
 const fs = require('fs');
 
