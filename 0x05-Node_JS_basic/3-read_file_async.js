@@ -1,31 +1,31 @@
-/**
-*Reading a file asynchronously with Node JS
-*@author Zakariyah Ali <https://github.com/alibaba0010>
-*/
 const fs = require('fs');
 
-function countStudents(path) {
-  const promise = (res, rej) => {
-    fs.readFile(path, (err, data) => {
-      if (err) rej(Error('Cannot load the database'));
-      if (data) {
-        let newData = data.toString().trim().split('\n');
-        newData = newData.slice(1, newData.length);
-        console.log(`Number of students: ${newData.length}`);
-        const obj = {};
-        newData.forEach((el) => {
-          const student = el.split(',');
-          if (!obj[student[3]]) obj[student[3]] = [];
-          obj[student[3]].push(student[0]);
-        });
-        for (const cls in obj) {
-          if (cls) console.log(`Number of students in ${cls}: ${obj[cls].length}. List: ${obj[cls].join(', ')}`);
-        }
-      }
-      res();
-    });
-  };
-  return new Promise(promise);
+async function countStudents(path) {
+  let data;
+  try {
+    data = await fs.promises.readFile(path, 'utf8');
+  } catch (error) {
+    throw new Error('Cannot load the database');
+  }
+  const students = data.split('\n')
+    .map((student) => student.split(','))
+    .filter((student) => student.length === 4 && student[0] !== 'firstname')
+    .map((student) => ({
+      firstName: student[0],
+      lastName: student[1],
+      age: student[2],
+      field: student[3],
+    }));
+  const csStudents = students
+    .filter((student) => student.field === 'CS')
+    .map((student) => student.firstName);
+  const sweStudents = students
+    .filter((student) => student.field === 'SWE')
+    .map((student) => student.firstName);
+  console.log(`Number of students: ${students.length}`);
+  console.log(`Number of students in CS: ${csStudents.length}. List: ${csStudents.join(', ')}`);
+  console.log(`Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}`);
+  return { students, csStudents, sweStudents };
 }
 
 module.exports = countStudents;
