@@ -1,7 +1,7 @@
 /**
 *A function that prints a string to standard output
 *@param {String} msg The string to print
-*@author Oyedele Bolaji <https://github.com/alibaba0010>
+*@author Zakariyah Ali <https://github.com/alibaba0010>
 */
 process.stdout.write('Welcome to Holberton School, what is your name?\n');
 process.stdin.on('readable', () => {

@@ -1,6 +1,6 @@
 /**
 *A more complex http server using Node's http module
-* *@author Oyedele Bolaji <https://github.com/alibaba0010>
+* *@author Zakariyah Ali <https://github.com/alibaba0010>
 */
 
 const http = require('http');

@@ -1,6 +1,6 @@
 /**
 *Reading a file asynchronously with Node JS
-*@author Oyedele Bolaji <https://github.com/alibaba0010>
+*@author Zakariyah Ali <https://github.com/alibaba0010>
 */
 const fs = require('fs');
 
@@ -9,7 +9,8 @@ function countStudents(path) {
     fs.readFile(path, (err, data) => {
       if (err) rej(Error('Cannot load the database'));
       if (data) {
-        let newData = data.toString().split('\n');
+        let newData = data.toString().trim().split('\n');
+        console.log(`new Data ${newData}`)
         newData = newData.slice(1, newData.length - 1);
         console.log(`Number of students: ${newData.length}`);
         const obj = {};
