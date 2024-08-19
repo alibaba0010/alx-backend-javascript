@@ -1,3 +1,8 @@
+/**
+*Create a small HTTP server using Node's HTTP module
+*@author Zakariyah Ali <https://github.com/alibaba0010>
+*/
+
 const fs = require('fs');
 
 async function countStudents(path) {
