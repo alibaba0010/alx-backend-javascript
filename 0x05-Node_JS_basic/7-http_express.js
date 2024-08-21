@@ -11,14 +11,12 @@ const hostname = '127.0.0.1';
 const port = 1245;
 
 app.get('/', (req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
   res.send('Hello Holberton School!');
 });
 
 app.get('/students', async (req, res) => {
-  res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
+  res.statusCode = 200;
   res.write('This is the list of our students\n');
   await students(process.argv[2]).then((data) => {
     res.write(`Number of students: ${data.students.length}\n`);
